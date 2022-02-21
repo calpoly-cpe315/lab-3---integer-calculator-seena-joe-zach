@@ -7,7 +7,8 @@
     .global main
 main:
     // driver function main lives here, modify this for your other functions
-
+    ldr    w0, printdata
+    bl     printf
 
 
 
@@ -27,3 +28,13 @@ yes:
     .byte   'y'
 scanchar:
     .asciz  " %c"
+numprompt1:
+    .asciz  "Enter Number 1: "
+numprompt2:
+    .asciz  "Enter Number 2: "
+opprompt:
+    .asciz  "Enter Operation: "
+result:
+    .asciz  "Result: "
+again:
+    .asciz  "Again? "
