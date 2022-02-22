@@ -7,7 +7,10 @@
     .global main
 main:
     // driver function main lives here, modify this for your other functions0
-    stp    x29,x30, [sp,-32]!
+    stp    x29, x30, [sp,-48]!
+    stp    x19, x20, [sp, 16]
+    stp    x21, x22, [sp, 32]
+
     mov    x29,sp
     
 
@@ -98,7 +101,11 @@ finish:
     cmp    w0, w1          // Compare user's answer to char 'y'
     b.eq   loop            // branch to appropriate location
     
-end:
+    ldp    x19, x20, [sp, 16]
+    ldp    x21, x22, [sp, 32]
+    ldp    x29, x30, [sp], 48    
+    ret
+
 
 printprompt1:
     .word   numprompt1
