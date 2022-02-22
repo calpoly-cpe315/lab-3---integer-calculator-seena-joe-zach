@@ -59,36 +59,45 @@ loop:
     ldrb   w1, [x1]
     cmp    w21, w1
     b.eq   subtract
+    
 
+    b invalidwarning
 
     // multiply
 multiply:
     mov    x0, x19
     mov    x1, x20
     bl     intmul
-    b      finish
+    b      printresult
     
     // add
 add:
     mov    x0, x19
     mov    x1, x20
     bl     intadd
-    b      finish
+    b      printresult
     
     // subtract 
 subtract:
     mov    x0, x19
     mov    x1, x20
     bl     intsub
-    b      finish
+    b      printresult
+
+invalidwarning:
+    ldr    w0, printprompt1 + 20
+    bl     printf
+    b      promptagain
 
 
     // Print result and prompt for looping
-finish: 
+printresult: 
     mov    x1, x0
     ldr    w0, printprompt1 + 12
     bl     printf
+    b      promptagain
 
+promptagain:
     ldr    w0, printprompt1 + 16
     bl     printf 
 
@@ -113,6 +122,7 @@ printprompt1:
     .word   opprompt
     .word   result
     .word   again
+    .word   invalid
 yes:
     .byte   'y'
 multsign:
@@ -136,3 +146,5 @@ result:
     .asciz  "Result is: %d\n"
 again:
     .asciz  "Again? "
+invalid:
+    .asciz  "Invalid Operation Entered.\n"
