@@ -96,7 +96,9 @@ finish:
     ldrb   w1, [x1]        // Load the actual character 'y' into x1
     ldrb   w0, [sp]        // Put the user's value in r0
     cmp    w0, w1          // Compare user's answer to char 'y'
-    b      loop         // branch to appropriate location
+    b.eq   loop            // branch to appropriate location
+    
+end:
 
 printprompt1:
     .word   numprompt1
