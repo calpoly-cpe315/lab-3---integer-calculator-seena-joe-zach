@@ -83,7 +83,7 @@ subtract:
     // Print result and prompt for looping
 finish: 
     mov    x1, x0
-    ldr    x0, printprompt1 + 12
+    ldr    w0, printprompt1 + 12
     bl     printf
 
     ldr    w0, printprompt1 + 16
