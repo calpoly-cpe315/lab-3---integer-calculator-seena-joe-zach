@@ -22,7 +22,7 @@ loop:
     ldr	   w0, =scanint
     mov    x1, x29
     bl     scanf
-    ldrb   w19, [sp]
+    ldr    x19, [sp]
 
     // prompt for second number
     ldr    w0, printprompt1+4
@@ -31,7 +31,7 @@ loop:
     ldr    w0, =scanint
     mov    x1, x29
     bl     scanf
-    ldrb   w20, [sp]
+    ldr    x20, [sp]
 
     // read operation
     ldr    w0, printprompt1+8

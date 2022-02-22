@@ -6,8 +6,8 @@
 intadd:
     stp x29,x30,[sp,-32]!
     stp x19,x20,[sp,16]
-    sxtb x0,w0
-    sxtb x1,w1
+    sxtw x0,w0
+    sxtw x1,w1
 if:
     cmp x1,0
     bne else
