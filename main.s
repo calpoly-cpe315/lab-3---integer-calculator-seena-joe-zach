@@ -9,13 +9,25 @@ main:
     // driver function main lives here, modify this for your other functions0
     stp    x29,x30, [sp,-32]!
     mov    x29,sp
+    
+    // prompt for first number
     ldr    w0, printprompt1
     bl     printf
-    ldr	   w0, printprompt1+4
-    ldr    x1, [x29,#28]
+
+    ldr	   w0, =input
+    mov    x1, x29
     bl     scanf
-    ldr    w0, printprompt1+8
+    ldrb   w19, [sp]
+
+    // prompt for second number
+    ldr    w0, printprompt1+4
     bl     printf
+
+    ldr    w0, =input
+    mov    x1, x29
+    bl     scanf
+    ldrb   w20, [sp]
+
 
 
 
@@ -33,11 +45,8 @@ loop: ldr     w0, =scanchar
 
 printprompt1:
     .word numprompt1
-    .word num1
     .word numprompt2
-    .word num2
     .word opprompt
-    .word op
     .word result
     .word again
 yes:
@@ -46,19 +55,13 @@ scanchar:
     .asciz  " %c"
 numprompt1:
     .asciz  "Enter Number 1: "
-num1:
+input:
     .asciz "%d"
     .space 1
 numprompt2:
     .asciz  "Enter Number 2: "
-num2:
-    .asciz "%d"
-    .space 1
 opprompt:
     .asciz  "Enter Operation: "
-op:
-    .asciz "%d"
-    .space 1
 result:
     .asciz  "Result: "
 again:
