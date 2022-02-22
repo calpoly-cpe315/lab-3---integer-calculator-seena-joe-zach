@@ -15,9 +15,6 @@ else:
     LSL x1,x1,1
     bl intadd
 endif:
-    ldr x30,[sp,-32]
-    ldr x19,[sp,8]
-    ldr x20,[sp,16]
     ret
 
 
